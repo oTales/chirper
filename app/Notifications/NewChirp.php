@@ -4,7 +4,7 @@ namespace App\Notifications;
 
 use App\Models\Chirp;
 use Illuminate\Bus\Queueable;
-use Illuminate\Suport\Str;
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -28,6 +28,7 @@ class NewChirp extends Notification
      */
     public function via(object $notifiable): array
     {
+
         return ['mail'];
     }
 
@@ -36,6 +37,7 @@ class NewChirp extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+        
         return (new MailMessage)
                     ->subject("New Chirp from {$this->chirp->user->name}")
                     ->greeting("New Chirp from {$this->chirp->user->name}")
